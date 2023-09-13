@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>clock</title>
+    
+    
+</head>
+<body>
+    
+    <div class="container">
+        <h1 class="first"> <span id="currtime">Current Time is :</span> 
+            <span id="time"> default </span> </h1>
+        <h4 style="font-weight:lighter;"><br>This is current time shown for New delhi, Delhi  </h4>
+        <br><hr size="1px">
+        <h5 style="margin-top: 10px ; font-weight: lighter;">we are here to show you time for other countries </h5>
+        <!-- <button id="button1" onclick="window.location.href='//www.timeanddate.com/worldclock/';" >Browse Time</button> -->
+        <a href="https://www.timeanddate.com/worldclock/" target="_blank"><button id="button1" onclick="" >Browse Time</button></a>
+        <script src="s.js" charset="UTF-8"></script>
+        <link rel="stylesheet" href="style.css">
+        
+
+    </div>
+    
+</body>
+
+</html>
+<!-- <script>
+    const option= { weekday:"long", year:"numeric", month:"short", day:"numeric"};
+    a= new Date();
+    let time= a.getHours()+ ":" + a.getMinutes() + ":" +a.getSeconds();
+    let date= a.toLocaleDateString(undefined,option );
+    document.getElementById('time').innerHTML = time + " on <br>" + date ;
+</script> -->

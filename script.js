@@ -1,50 +1,118 @@
-setInterval(() => {
-  // get time indicator elements
-  let hours = document.getElementById('hours');
-  let minutes = document.getElementById('minutes');
-  let secondes = document.getElementById('seconds');
-  let ampm = document.getElementById('ampm');
+let timeText = document.getElementById("timeText");
+let greetText = document.getElementById("greetText");
 
-  // digits time indicator
-  let hh = document.getElementById('hh');
-  let mm = document.getElementById('mm');
-  let ss = document.getElementById('ss');
+function function2() {
+  // Check if the alarm should be triggered
+  const slotOne = document.getElementById("slotOne").value;
+  const slotTwo = document.getElementById("slotTwo").value;
+  const slotThree = document.getElementById("slotThree").value;
+  const slotFour = document.getElementById("slotFour").value;
 
+  const date = new Date();
+  const hours = date.getHours();
 
-  // dot time indicator
-  let dotH = document.querySelector('.h_dot');
-  let dotM = document.querySelector('.m_dot');
-  let dotS = document.querySelector('.s_dot');
+  // Get the selected values from the four dropdowns
+  let wakeTime =
+    document.getElementById("slotOne").options[
+      document.getElementById("slotOne").selectedIndex
+    ].text;
+  let lunchTime =
+    document.getElementById("slotTwo").options[
+      document.getElementById("slotTwo").selectedIndex
+    ].text;
+  let napTime =
+    document.getElementById("slotThree").options[
+      document.getElementById("slotThree").selectedIndex
+    ].text;
+  let nightTime =
+    document.getElementById("slotFour").options[
+      document.getElementById("slotFour").selectedIndex
+    ].text;
 
-  // get current time
-  let h = new Date().getHours();
-  let m = new Date().getMinutes();
-  let s = new Date().getSeconds();
-  let ap = h >= 12 ? 'PM' : 'AM';
+  // Update the text content of the guide div
+  document.getElementById("wakeTime").textContent = wakeTime;
+  document.getElementById("lunchTime").textContent = lunchTime;
+  document.getElementById("napTime").textContent = napTime;
+  document.getElementById("nightTime").textContent = nightTime;
 
-  // convert to 12 hour format
-  if (h > 12) {
-    h = h - 12;
+  // ===========  for Images  =============
+  if (hours === parseInt(slotOne)) {
+    image = "./img/Component.png"; // 6:00AM - 10:00AM
+    wakeTime.innerHTML;
+  } else if (hours === parseInt(slotTwo)) {
+    image = "./img/Group 5183.png"; // 10:00AM - 2:00PM
+    timeText.innerHTML = `GOOD AFTERNOON !! TAKE SOME SLEEP`;
+    // greetText.innerHTML = `LET'S HAVE SOME LUNCH !!`;
+  } else if (hours === parseInt(slotThree)) {
+    image = "./img/evening.png"; // 4:00PM - 7:00PM
+    timeText.innerHTML = `GOOD EVENING !!`;
+    // greetText.innerHTML = `STOP YAWNING, GET SOME TEA.. ITS JUST EVENING!`;
+  } else if (hours === parseInt(slotFour)) {
+    image = "./img/night.png"; // 7:00PM - 5:00AM
+    timeText.innerHTML = `GOOD NIGHT !!`;
+    // greetText.innerHTML = `CLOSE YOUR EYES AND GO TO SLEEP`;
+  }
+  // set the image source attribute to the correct image
+  document.getElementById("changeImage").src = image;
+}
+function showTime() {
+  let showDisplayTime = new Date();
+  let hours = showDisplayTime.getHours();
+  let mins = showDisplayTime.getMinutes();
+  let secs = showDisplayTime.getSeconds();
+  let session = document.getElementById("session");
+
+  if (hours >= 12) {
+    session.innerHTML = "PM";
+  } else {
+    session.innerHTML = "AM";
   }
 
-  // add 0 before single digit
-  h = h < 10 ? '0' + h : h;
-  m = m < 10 ? '0' + m : m;
-  s = s < 10 ? '0' + s : s;
+  if (hours > 12) {
+    hours = hours - 12;
+  }
+  if ((hours + "").length === 1) {
+    hours = "0" + hours;
+  }
+  if ((mins + "").length === 1) {
+    mins = "0" + mins;
+  }
+  if ((secs + "").length === 1) {
+    secs = "0" + secs;
+  }
 
-  // set time and label
-  hours.innerHTML = h + 'Hours';
-  minutes.innerHTML = m + 'Minutes';
-  secondes.innerHTML = s + 'Seconds';
-  ampm.innerHTML = ap;
+  document.getElementById("hours").innerHTML = hours + `<br>hours`;
+  document.getElementById("mins").innerHTML = mins + `<br>mins`;
+  document.getElementById("secs").innerHTML = secs + `<br>secs`;
+  document.getElementById("changeImage").style.borderRadius = "10px";
+}
+setInterval(showTime, 1000);
+function showChanges() {
+  let Time = new Date();
+  let hour = Time.getHours();
 
-  // set time circular indicator
-  hh.style.strokeDashoffset = 440 - (440 * h) / 12;
-  mm.style.strokeDashoffset = 440 - (440 * m) / 60;
-  ss.style.strokeDashoffset = 440 - (440 * s) / 60;
+  // 6:00AM - 10:00AM
+  if (hour > 5 && hour < 11) {
+    image = "./img/Component.png";
+  }
+  // 10:00AM - 2:00PM
+  else if (hour > 10 && hour < 15) {
+    // image = "./img/Group 5183.png";
+    // timeText.innerHTML = `GOOD AFTERNOON !! TAKE SOME SLEEP`;
+    greetText.innerHTML = `LET'S HAVE SOME LUNCH !!`;
+  } else if (hour > 14 && hour < 19) {
+    // image = "./img/evening.png"; // 4:00PM - 7:00PM
+    // timeText.innerHTML = `GOOD EVENING !!`;
+    greetText.innerHTML = `STOP YAWNING, GET SOME TEA.. ITS JUST EVENING!`;
+  }
+  // 7:00PM - 5:00AM
+  else {
+    // image = "./img/night.png";
+    // timeText.innerHTML = `GOOD NIGHT !!`;
+    greetText.innerHTML = `CLOSE YOUR EYES AND GO TO SLEEP`;
+  }
 
-  // set dot time position indicator
-  dotH.style.transform = `rotate(${h * 30}deg)`;
-  dotM.style.transform = `rotate(${m * 6}deg)`;
-  dotS.style.transform = `rotate(${s * 6}deg)`;
-}, 1000);
+  // set the image source attribute to the correct image
+  // document.getElementById("changeImage").src = image;
+}
+setInterval(showChanges, 1000);

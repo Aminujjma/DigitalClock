@@ -1,0 +1,111 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    background-image: linear-gradient(
+        rgba(255, 255, 255, 0.1),
+        rgba(0, 0, 0, 0.9)
+      ),
+      url(bg.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 8000px;
+  }
+  
+  .maincontainer {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .center {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    position: relative;
+  }
+  
+  .center::before {
+    position: absolute;
+    content: "Digital Clock";
+    top: -280px;
+    font-size: 5rem;
+    font-weight: 600;
+    color: tomato;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: black;
+  }
+  
+  .center .box {
+    width: 180px;
+    height: 180px;
+    background: whitesmoke;
+    border-radius: 1rem;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .center p {
+    color: slategray;
+    font-size: 6rem;
+    font-weight: 600;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: black;
+  }
+  
+  .center span {
+    transition: 0.1s ease-in-out;
+    font-size: 5rem;
+    color: aliceblue;
+  }
+  
+  .hide {
+    opacity: 0;
+  }
+  
+  /* Mobile Devices  */
+  
+  @media (max-width: 640px) {
+  
+    .center p {
+      font-size: 4rem;
+    }
+  
+    .center .box {
+      width: 120px;
+      height: 120px;
+    }
+  
+    .center {
+      gap: 1rem;
+    }
+  
+    .center::before {
+      text-align: center;
+      top: -170px;
+      font-size: 4rem;
+    }
+  }
+  
+  
+  @media (min-width: 768px) {
+  
+      .center::before {
+      top: -200px;
+    }
+  }
+  
+  @media (min-width: 1024px) {
+  
+      .center::before {
+      top: -220px;
+    }
+  }

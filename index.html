@@ -1,29 +1,28 @@
-const myhours = document.querySelector("#hours p");
-const myminutes = document.querySelector("#mins p");
-const myseconds = document.querySelector("#sec p");
-const colon = document.querySelectorAll("span");
-
-
-const mytime = setInterval(function time() {
-
-    colon.forEach((item)=>{
-        item.classList.toggle("hide");
-    });
-    
-
-  const date = new Date();
-  hrs = date.getHours();
-  mins = date.getMinutes();
-  sec = date.getSeconds();
-
-  hrs = hrs % 12;
-  hrs = hrs || 12;
-  
-  hrs = hrs.toString().padStart(2, "0");
-  mins = mins.toString().padStart(2, "0");
-  sec = sec.toString().padStart(2, "0");
-
-  myhours.textContent = hrs;
-  myminutes.textContent = mins;
-  myseconds.textContent = sec;
-}, 1000);
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <script de src="script.js" defer ></script>
+    <title>Digital Clock</title>
+  </head>
+  <body>
+    <div class="maincontainer">
+      <div class="center">
+        <div id="hours" class="box">
+          <p></p>
+        </div>
+        <span>:</span>
+        <div id="mins" class="box">
+          <p></p>
+        </div>
+        <span>:</span>
+        <div id="sec" class="box">
+          <p></p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
